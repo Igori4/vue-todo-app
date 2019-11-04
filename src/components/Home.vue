@@ -7,16 +7,16 @@
 </template>
 
 <script>
-import Header from './Header'
-import TodoList from './TodoList'
-import Filters from './Filters'
+import Header from "./Header";
+import TodoList from "./TodoList";
+import Filters from "./Filters";
 
 export default {
-  name: 'Home',
-  components: {
-    Header,
-    TodoList,
-    Filters
-  }
-}
+    name: "Home",
+    components: {
+        Header,
+        TodoList,
+        Filters
+    }
+};
 </script>
