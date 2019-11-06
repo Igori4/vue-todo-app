@@ -3,31 +3,31 @@ import firebase from "firebase";
 const state = {
   todos: [],
   isLoading: false,
-  filterOption: "all"
+  filterOption: "all",
+  user: null
 };
 
 const mutations = {
-  getFirebaseTodos(state, todos) {
-    state.todos = [...todos];
-  },
   addNewTodos(state, todo) {
     state.todos.push(todo);
   },
   deleteAllTodos(state) {
     state.todos = [];
   },
-  deleteItem(state, index) {
-    state.todos = state.todos.filter((todo, i) => {
-      if (i !== index) {
+  deleteItem(state, id) {
+    state.todos = state.todos.filter(todo => {
+      if (todo.id !== id) {
         return todo;
       }
     });
   },
-  itemCheck(state, index) {
-    state.todos[index].complited = !state.todos[index].complited;
+  itemCheck(state, id) {
+    const updatedItem = state.todos.find(item => item.id === id);
+    updatedItem.complited = !updatedItem.complited;
   },
-  updateItemValue(state, { index, newValue }) {
-    state.todos[index].value = newValue;
+  updateItemValue(state, { id, newValue }) {
+    const updatedItem = state.todos.find(item => item.id === id);
+    updatedItem.value = newValue;
   },
   setFilter(state, option) {
     state.filterOption = option;
@@ -37,6 +37,12 @@ const mutations = {
   },
   loadingData(state) {
     state.isLoading = !state.isLoading;
+  },
+  setUser(state, user) {
+    state.user = user;
+  },
+  logOut(state) {
+    state.user = null;
   }
 };
 
@@ -49,6 +55,9 @@ const getters = {
   },
   filterOption(state) {
     return state.filterOption;
+  },
+  getUser(state) {
+    return state.user;
   }
 };
 
@@ -56,7 +65,7 @@ const actions = {
   setTodosFromFirebase() {
     firebase
       .database()
-      .ref()
+      .ref(`/users/${state.user.uid}`)
       .set({
         todos: state.todos
       });
@@ -65,7 +74,7 @@ const actions = {
     commit("loadingData");
     return firebase
       .database()
-      .ref("/todos")
+      .ref(`/users/${state.user.uid}/todos`)
       .once("value")
       .then(snapshot => snapshot.val())
       .then(todos => {

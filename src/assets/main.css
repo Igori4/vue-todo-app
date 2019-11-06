@@ -56,7 +56,6 @@ button {
 
 .add-item-btn {
   background-color: #ec5926;
-  padding: 5px 15px;
   margin: 0 10px;
   color: white;
   border-radius: 4px;
@@ -121,6 +120,23 @@ button {
 
 .todo-value {
   margin-left: 10px;
+  font-size: 12px;
+}
+
+.todo-time {
+  font-size: 10px;
+  margin-left: 30px;
+  opacity: 0.4;
+  font-style: italic;
+  overflow: auto;
+}
+
+.todo-item-wrapper {
+  margin: 10px -6px;
+}
+
+.el-card__body {
+  padding: 0 !important;
 }
 
 .todo-item {
@@ -175,4 +191,155 @@ button {
 .btn-filter:hover {
   background-color: #ec5926;
   color: white;
+}
+
+.todo-options-addition-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.el-form-item__content .add-item-btn {
+  background-color: white;
+  color: #565eea;
+  border: 1px solid #565eea;
+  transition: all 0.1s ease;
+}
+
+.add-item-btn:hover {
+  background-color: #565eea;
+  color: white;
+  border: 1px solid #565eea;
+}
+
+.el-form-item__content .delete-all-item-btn {
+  background-color: white;
+  color: #ff4a4a;
+  border: 1px solid #ff4a4a;
+}
+.delete-all-item-btn:hover {
+  background-color: #dc1111e6;
+  color: white;
+  border: 1px solid #ff4a4a;
+}
+
+.todo-options-buttons button {
+  color: #e6a23c;
+  background-color: white;
+  border-color: #dad8d6;
+  transition: all 0.1s ease;
+}
+
+.todo-options-buttons button:hover {
+  color: white;
+  background-color: #e6a23c;
+  border-color: #e6a23c;
+}
+
+.todo-options-buttons button:focus {
+  color: white;
+  background-color: #e6a23c;
+  border-color: #e6a23c;
+}
+
+.todo-options-addition-buttons .update-item {
+  color: #34db01;
+  background-color: white;
+  border-color: #57eb01;
+  transition: all 0.1s ease;
+}
+.update-item:hover {
+  color: white;
+  background-color: #34db01;
+  border-color: #57eb01;
+}
+
+.todo-options-addition-buttons .cancle-btn {
+  color: #db0101cb;
+  background-color: white;
+  border-color: #db0101cb;
+  transition: all 0.1s ease;
+}
+
+.cancle-btn:hover {
+  color: white;
+  background-color: #db0101cb;
+  border-color: #db0101cb;
+}
+
+.filter-button {
+  color: #e6a23c;
+  background-color: white;
+  border-color: #dad8d6;
+  transition: all 0.1s ease;
+}
+
+.filter-button:hover {
+  color: white;
+  background-color: #e6a23c;
+  border-color: #e6a23c;
+}
+
+.filter-button:focus {
+  color: white;
+  background-color: #e6a23c;
+  border-color: #e6a23c;
+}
+
+.login-form-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.sing-up-error-message {
+  color: rgba(218, 57, 57, 0.93);
+  position: absolute;
+  top: 85%;
+  left: 15%;
+}
+
+.login-create-account-btn {
+  color: #e6a23c;
+  cursor: pointer;
+}
+
+.login-btn {
+  background-color: white;
+  color: #565eea;
+  border: 1px solid #565eea;
+  transition: all 0.1s ease;
+}
+
+.login-btn:hover {
+  background-color: #565eea;
+  color: white;
+  border: 1px solid #565eea;
+}
+
+.el-icon-user {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.user-name-title {
+  margin: 7px;
+  font-style: italic;
+  color: #3a3e71;
+}
+
+.logaout-btn {
+  font-size: 11px;
+  color: #f3ac0a;
+  cursor: pointer;
+}
+
+.header-info {
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-icon {
+  margin: 9px 0px;
 }

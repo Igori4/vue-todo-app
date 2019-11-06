@@ -6,9 +6,6 @@
 
 <script>
 export default {
-    name: "app",
-    beforeDestroy() {
-        this.$store.dispatch("setTodosFromFirebase");
-    }
+    name: "app"
 };
 </script>

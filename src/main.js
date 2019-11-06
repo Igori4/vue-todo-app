@@ -6,6 +6,7 @@ import firebaseConfig from "./config/firebase";
 import firebase from "firebase";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
+require("@/assets/main.css");
 
 Vue.config.productionTip = false;
 

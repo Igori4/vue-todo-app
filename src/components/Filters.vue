@@ -25,22 +25,3 @@ export default {
     }
 };
 </script>
-
-<style scoped lang="scss">
-.filter-button {
-    color: #e6a23c;
-    background-color: white;
-    border-color: #dad8d6;
-    transition: all 0.1s ease;
-    &:hover {
-        color: white;
-        background-color: #e6a23c;
-        border-color: #e6a23c;
-    }
-    &:focus {
-        color: white;
-        background-color: #e6a23c;
-        border-color: #e6a23c;
-    }
-}
-</style>

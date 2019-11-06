@@ -17,6 +17,13 @@ export default {
         Header,
         TodoList,
         Filters
+    },
+    created() {
+        if (this.$store.getters.getUser) {
+            this.$router.push("/");
+        } else {
+            this.$router.push("/login");
+        }
     }
 };
 </script>

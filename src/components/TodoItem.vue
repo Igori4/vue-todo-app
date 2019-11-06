@@ -6,7 +6,7 @@
                     <el-col :span="16" class="item-options">
                         <el-checkbox
                             class="todo-checkbox"
-                            @change="itemCheck(index)"
+                            @change="itemCheck(id)"
                             :checked="todo.complited"
                         ></el-checkbox>
                         <p class="todo-value" :class="{'complited': todo.complited}">{{todo.value}}</p>
@@ -21,7 +21,7 @@
                         >Edit item</el-button>
                         <el-button
                             class="delete-item-btn"
-                            @click="deleteItem(index)"
+                            @click="deleteItem(id)"
                             size="mini"
                         >Delete item</el-button>
                     </el-col>
@@ -36,7 +36,7 @@
                             class="update-item"
                             type="success"
                             icon="el-icon-check"
-                            @click="updateItemValue(index)"
+                            @click="updateItemValue(id)"
                             circle
                         ></el-button>
                         <el-button
@@ -56,7 +56,7 @@
 <script>
 export default {
     name: "TodoItem",
-    props: ["todo", "index", "fiterOption"],
+    props: ["todo", "id", "fiterOption"],
     data() {
         return {
             isEditValue: false,
@@ -82,17 +82,17 @@ export default {
             this.newValue = this.$props.todo.value;
         },
 
-        deleteItem(index) {
-            this.$store.commit("deleteItem", index);
+        deleteItem(id) {
+            this.$store.commit("deleteItem", id);
         },
 
-        itemCheck(index) {
-            this.$store.commit("itemCheck", index);
+        itemCheck(id) {
+            this.$store.commit("itemCheck", id);
         },
 
-        updateItemValue(index) {
+        updateItemValue(id) {
             this.$store.commit("updateItemValue", {
-                index,
+                id,
                 newValue: this.newValue
             });
             this.editValue();
@@ -100,68 +100,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss">
-.todo-options-buttons {
-    button {
-        color: #e6a23c;
-        background-color: white;
-        border-color: #dad8d6;
-        transition: all 0.1s ease;
-        &:hover {
-            color: white;
-            background-color: #e6a23c;
-            border-color: #e6a23c;
-        }
-        &:focus {
-            color: white;
-            background-color: #e6a23c;
-            border-color: #e6a23c;
-        }
-    }
-}
-
-.todo-options-addition-buttons {
-    .update-item {
-        color: #34db01;
-        background-color: white;
-        border-color: #57eb01;
-        transition: all 0.1s ease;
-        &:hover {
-            color: white;
-            background-color: #34db01;
-            border-color: #57eb01;
-        }
-    }
-    .cancle-btn {
-        color: #db0101cb;
-        background-color: white;
-        border-color: #db0101cb;
-        transition: all 0.1s ease;
-        &:hover {
-            color: white;
-            background-color: #db0101cb;
-            border-color: #db0101cb;
-        }
-    }
-}
-
-.todo-value {
-    font-size: 12px;
-}
-.todo-time {
-    font-size: 10px;
-    margin-left: 30px;
-    opacity: 0.4;
-    font-style: italic;
-    overflow: auto;
-}
-
-.el-card__body {
-    padding: 0 !important;
-}
-
-.todo-item-wrapper {
-    margin: 10px -6px;
-}
-</style>

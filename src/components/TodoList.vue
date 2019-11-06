@@ -3,10 +3,10 @@
         <transition name="el-zoom-in-top">
             <div class="todo-list" v-if="todos.length">
                 <TodoItem
-                    v-for="(todo, index) in todos"
-                    :key="index"
+                    v-for="todo in todos"
+                    :key="todo.id"
                     :todo="todo"
-                    :index="index"
+                    :id="todo.id"
                     :fiterOption="filterOption"
                 ></TodoItem>
             </div>
@@ -33,7 +33,7 @@ export default {
             return this.$store.getters.filterOption;
         },
         isDataLoading() {
-            return this.$store.getters.isLoading;
+            return this.$store.getters.loadingData;
         }
     },
     updated() {

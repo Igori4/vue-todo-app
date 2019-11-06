@@ -3,7 +3,7 @@
         <el-row :gutter="20">
             <el-col :span="24">
                 <el-form :inline="true" @submit.native.prevent class="todo-form">
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-input
                             class="add-item-input p-10"
                             v-model="inputValue"
@@ -12,7 +12,7 @@
                             :size="'small'"
                         />
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="10">
                         <el-form-item>
                             <el-button
                                 class="add-item-btn"
@@ -29,6 +29,18 @@
                                 :size="'small'"
                             >Delete all</el-button>
                         </el-form-item>
+                    </el-col>
+                    <el-col :span="6" class="header-info">
+                        <router-link
+                            to="./login"
+                            tag="p"
+                            class="logaout-btn"
+                            @click="logOut"
+                        >Log Out</router-link>
+                        <p class="user-name-title">{{userName}}</p>
+                        <p class="user-icon">
+                            <i class="el-icon-user"></i>
+                        </p>
                     </el-col>
                 </el-form>
             </el-col>
@@ -50,7 +62,8 @@ export default {
             this.$store.commit("addNewTodos", {
                 value: this.inputValue,
                 complited: false,
-                time: this.getNow()
+                time: this.getNow(),
+                id: this.inputValue + this.getNow()
             });
             this.inputValue = "";
         },
@@ -59,13 +72,22 @@ export default {
         },
         getNow() {
             const today = new Date();
-            const time =
-                today.getHours() +
-                ":" +
-                today.getMinutes() +
-                ":" +
-                today.getSeconds();
-            return time;
+            const availableDays = [
+                "Mon",
+                "Tue",
+                "Wed",
+                "Thu",
+                "Fri",
+                "Sat",
+                "Sun"
+            ];
+            const day = today.getDay();
+            return (
+                availableDays[day - 1] + " " + today.toLocaleTimeString("it-IT")
+            );
+        },
+        logOut() {
+            this.$store.commit("logOut");
         }
     },
 
@@ -81,8 +103,8 @@ export default {
         isTodosExist() {
             return this.$store.getters.getTodos.length;
         },
-        getTime() {
-            return this.time;
+        userName() {
+            return this.$store.getters.getUser.displayName;
         }
     },
 
@@ -91,30 +113,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss">
-.el-form-item__content {
-    .add-item-btn {
-        background-color: white;
-        color: #565eea;
-        border: 1px solid #565eea;
-        transition: all 0.1s ease;
-        &:hover {
-            background-color: #565eea;
-            color: white;
-            border: 1px solid #565eea;
-        }
-    }
-
-    .delete-all-item-btn {
-        background-color: white;
-        color: #ff4a4a;
-        border: 1px solid #ff4a4a;
-        &:hover {
-            background-color: #dc1111e6;
-            color: white;
-            border: 1px solid #ff4a4a;
-        }
-    }
-}
-</style>
